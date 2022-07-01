@@ -112,8 +112,7 @@ extern "C" {
     typedef UINT* WPARAM;
     typedef long long LPARAM;
     typedef long long LRESULT;
-	typedef __stdcall CALLBACK;
-    typedef LRESULT (CALLBACK* WNDPROC)(HWND, UINT, WPARAM, LPARAM);
+    typedef LRESULT (* WNDPROC)(HWND, UINT, WPARAM, LPARAM);
   #endif
  #elif defined(GLFW_EXPOSE_NATIVE_COCOA) || defined(GLFW_EXPOSE_NATIVE_NSGL)
   #if defined(__OBJC__)
