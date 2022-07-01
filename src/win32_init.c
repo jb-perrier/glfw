@@ -681,9 +681,6 @@ GLFWbool _glfwConnectWin32(int platformID, _GLFWplatform* platform)
     return GLFW_TRUE;
 }
 
-// Get the windowProc implementation in win32_window.c
-WNDPROC glfwGetWin32WindowProc();
-
 int _glfwInitWin32(void)
 {
     if (!loadLibraries())
@@ -703,7 +700,6 @@ int _glfwInitWin32(void)
         return GLFW_FALSE;
 
     _glfwPollMonitorsWin32();
-	_glfw.win32.defaultWindowProc = glfwGetWin32WindowProc();
     return GLFW_TRUE;
 }
 
