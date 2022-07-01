@@ -1253,7 +1253,7 @@ static int createNativeWindow(_GLFWwindow* window,
     {
         WNDCLASSEXW wc = { sizeof(wc) };
         wc.style         = CS_HREDRAW | CS_VREDRAW | CS_OWNDC;
-        wc.lpfnWndProc   = windowProc;
+        wc.lpfnWndProc   = _glfw.win32.defaultWindowProc;
         wc.hInstance     = _glfw.win32.instance;
         wc.hCursor       = LoadCursorW(NULL, IDC_ARROW);
 #if defined(_GLFW_WNDCLASSNAME)
@@ -2452,3 +2452,17 @@ GLFWAPI HWND glfwGetWin32Window(GLFWwindow* handle)
     return window->win32.handle;
 }
 
+WNDPROC glfwGetWin32WindowProc()
+{
+	return windowProc;
+}
+
+WNDPROC glfwGetWin32DefaultWindowProc()
+{
+	return _glfw.win32.defaultWindowProc;
+}
+
+void glfwSetWin32DefaultWindowProc(WNDPROC proc)
+{
+	_glfw.win32.defaultWindowProc = proc;
+}

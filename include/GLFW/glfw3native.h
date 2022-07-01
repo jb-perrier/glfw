@@ -214,6 +214,10 @@ GLFWAPI const char* glfwGetWin32Monitor(GLFWmonitor* monitor);
  *  @ingroup native
  */
 GLFWAPI HWND glfwGetWin32Window(GLFWwindow* window);
+
+GLFWAPI WNDPROC glfwGetWin32WindowProc();
+GLFWAPI WNDPROC glfwGetWin32DefaultWindowProc();
+GLFWAPI WNDPROC glfwSetWin32DefaultWindowProc(WNDPROC proc);
 #endif
 
 #if defined(GLFW_EXPOSE_NATIVE_WGL)
