@@ -102,7 +102,19 @@ extern "C" {
    #undef APIENTRY
    #undef GLFW_APIENTRY_DEFINED
   #endif
-  #include <windows.h>
+  #ifndef GLFW_EXPOSE_NATIVE_WIN32_FORWARD
+    #include <windows.h>
+  #else
+    typedef void *PVOID;
+    typedef PVOID HANDLE;
+    typedef HANDLE HWND;
+    typedef unsigned int UINT;
+    typedef UINT* WPARAM;
+    typedef long long LPARAM;
+    typedef long long LRESULT;
+	typedef __stdcall CALLBACK;
+    typedef LRESULT (CALLBACK* WNDPROC)(HWND, UINT, WPARAM, LPARAM);
+  #endif
  #elif defined(GLFW_EXPOSE_NATIVE_COCOA) || defined(GLFW_EXPOSE_NATIVE_NSGL)
   #if defined(__OBJC__)
    #import <Cocoa/Cocoa.h>
